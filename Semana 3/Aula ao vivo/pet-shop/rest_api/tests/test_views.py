@@ -5,8 +5,6 @@ from model_bakery import baker
 
 from rest_framework.test import APIClient
 
-from base.models import Reserva, Petshop
-
 
 @pytest.fixture
 def reserva_dados():

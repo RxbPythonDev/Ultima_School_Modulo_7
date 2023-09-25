@@ -9,9 +9,13 @@ class Command(BaseCommand):
 
     # teste: str = ''
 
+    def add_arguments(self, parser):
+        parser.add_argument('dias', type=int)
+
     def handle(self, *args, **options):
         hoje = dt.date.today()
-        data_base = hoje - dt.timedelta(days=7)
+        dias = options['dias']
+        data_base = hoje - dt.timedelta(days=dias)
         reservas_antigas = Reserva.objects.filter(data_reserva__lte=data_base)
         reservas_antigas.update(finalizado=True)
         # for reserva in reservas_antigas:
